@@ -1,23 +1,22 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Tables;
 
+use Filament\Tables\Table;
 use App\Enum\BookingStatus;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Actions\DeleteAction;
 use Illuminate\Support\Facades\Auth;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Columns\TextColumn;
 
 class BookingsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn($query) => $query->where('user_id', Auth::user()->id))
+            ->modifyQueryUsing(fn ($query) => $query->where('user_id', Auth::user()->id))
             ->columns([
                 TextColumn::make('room.name')
                     ->searchable(),
@@ -29,8 +28,8 @@ class BookingsTable
                 TextColumn::make('end_time'),
                 TextColumn::make('status')
                     ->badge()
-                    ->getStateUsing(fn($record) => $record->is_conflict ? 'Conflict' : $record->status->value)
-                    ->color(fn($record) => match (true) {
+                    ->getStateUsing(fn ($record) => $record->is_conflict ? 'Conflict' : $record->status->value)
+                    ->color(fn ($record) => match (true) {
                         $record->status instanceof BookingStatus && $record->status->value === BookingStatus::Submit->value   => 'gray',
                         $record->status instanceof BookingStatus && $record->status->value === BookingStatus::Approved->value => 'success',
                         $record->status instanceof BookingStatus && $record->status->value === BookingStatus::Rejected->value => 'danger',
@@ -49,15 +48,15 @@ class BookingsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make()->visible(
-                    fn($record) =>
-                    !in_array($record->status->value, [
+                    fn ($record) =>
+                    ! in_array($record->status->value, [
                         BookingStatus::Approved->value,
                         BookingStatus::Rejected->value,
                     ])
                 ),
                 DeleteAction::make()->visible(
-                    fn($record) =>
-                    !in_array($record->status->value, [
+                    fn ($record) =>
+                    ! in_array($record->status->value, [
                         BookingStatus::Approved->value,
                         BookingStatus::Rejected->value,
                     ])

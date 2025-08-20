@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Schemas;
 
 use App\Enum\BookingStatus;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Filament\Infolists\Components\TextEntry;
 
 class BookingInfolist
 {
@@ -19,7 +18,7 @@ class BookingInfolist
                 TextEntry::make('end_time'),
                 TextEntry::make('status')
                     ->badge()
-                    ->color(fn($record) => match (true) {
+                    ->color(fn ($record) => match (true) {
                         $record->status instanceof BookingStatus && $record->status->value === BookingStatus::Submit->value   => 'gray',
                         $record->status instanceof BookingStatus && $record->status->value === BookingStatus::Approved->value => 'success',
                         $record->status instanceof BookingStatus && $record->status->value === BookingStatus::Rejected->value => 'danger',

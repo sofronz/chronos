@@ -1,15 +1,14 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Pages;
 
-use App\Enum\BookingStatus;
-use App\Filament\User\Resources\Bookings\BookingResource;
-use App\Models\Booking;
 use Carbon\Carbon;
+use App\Models\Booking;
+use App\Enum\BookingStatus;
+use Illuminate\Support\Facades\Auth;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Filament\User\Resources\Bookings\BookingResource;
 
 class CreateBooking extends CreateRecord
 {
@@ -42,7 +41,7 @@ class CreateBooking extends CreateRecord
         }
 
         $data['user_id'] = Auth::user()->id;
-        $data['status'] = BookingStatus::Submit;
+        $data['status']  = BookingStatus::Submit;
 
         return $data;
     }

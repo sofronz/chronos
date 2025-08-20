@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -11,13 +10,13 @@ class AdminMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
         $user = $request->user();
 
-        if (!$user || $user->role->slug !== 'roles-administrator') {
+        if (! $user || $user->role->slug !== 'roles-administrator') {
             abort(403, 'Unauthorized.');
         }
 

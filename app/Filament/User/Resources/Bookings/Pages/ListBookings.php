@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Pages;
 
 use App\Enum\BookingStatus;
-use App\Filament\User\Resources\Bookings\BookingResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
+use App\Filament\User\Resources\Bookings\BookingResource;
 
 class ListBookings extends ListRecords
 {

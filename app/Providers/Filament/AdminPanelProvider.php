@@ -1,15 +1,13 @@
 <?php
 namespace App\Providers\Filament;
 
-use App\Filament\Admin\Widgets\BookingStats;
-use App\Http\Middleware\AdminMiddleware;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Pages\Dashboard;
 use Filament\Support\Colors\Color;
-use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
+use App\Http\Middleware\AdminMiddleware;
 use Filament\Http\Middleware\Authenticate;
+use App\Filament\Admin\Widgets\BookingStats;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -40,7 +38,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
-                BookingStats::class
+                BookingStats::class,
             ])
             ->middleware([
                 EncryptCookies::class,

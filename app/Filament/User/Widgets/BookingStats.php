@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Filament\User\Widgets;
 
-use App\Enum\BookingStatus;
 use App\Models\Booking;
+use App\Enum\BookingStatus;
+use Illuminate\Support\Facades\Auth;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Illuminate\Support\Facades\Auth;
 
 class BookingStats extends StatsOverviewWidget
 {

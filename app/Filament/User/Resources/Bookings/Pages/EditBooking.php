@@ -1,17 +1,16 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Pages;
 
-use App\Enum\BookingStatus;
-use App\Filament\User\Resources\Bookings\BookingResource;
-use App\Models\Booking;
 use Carbon\Carbon;
-use Filament\Actions\DeleteAction;
+use App\Models\Booking;
+use App\Enum\BookingStatus;
 use Filament\Actions\ViewAction;
+use Filament\Actions\DeleteAction;
+use Illuminate\Support\Facades\Auth;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Filament\User\Resources\Bookings\BookingResource;
 
 class EditBooking extends EditRecord
 {

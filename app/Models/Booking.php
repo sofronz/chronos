@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
  * @property-read mixed $end_time
  * @property-read mixed $is_conflict
  * @property-read Room $room
- * @property-read \App\Models\User $user
+ * @property-read User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Booking newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Booking newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Booking query()
