@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
  * @property string $id
  * @property string $room_id
  * @property string $user_id
- * @property string $date
+ * @property \Illuminate\Support\Carbon $date
  * @property BookingStatus $status
  * @property string $purpose
  * @property DurationType $duration_type
@@ -21,8 +21,10 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
  * @property object|null $metadata
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $end_time
+ * @property-read mixed $is_conflict
  * @property-read Room $room
- * @property-read User $user
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Booking newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Booking newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Booking query()

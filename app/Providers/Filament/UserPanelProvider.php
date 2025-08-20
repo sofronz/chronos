@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers\Filament;
 
+use App\Filament\User\Widgets\BookingStats;
 use App\Http\Middleware\UserMiddleware;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -38,8 +39,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/User/Widgets'), for: 'App\Filament\User\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                BookingStats::class
             ])
             ->middleware([
                 EncryptCookies::class,

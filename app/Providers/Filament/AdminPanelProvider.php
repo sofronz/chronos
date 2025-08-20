@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Widgets\BookingStats;
 use App\Http\Middleware\AdminMiddleware;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -39,8 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                BookingStats::class
             ])
             ->middleware([
                 EncryptCookies::class,
