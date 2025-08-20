@@ -1,5 +1,5 @@
 <?php
-namespace App\Filament\Resources\Users\Tables;
+namespace App\Filament\Admin\Resources\Users\Tables;
 
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;

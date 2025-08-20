@@ -3,7 +3,7 @@ namespace App\Filament\User\Resources\Bookings\Schemas;
 
 use Filament\Schemas\Schema;
 
-class BookingInfolist
+class BookingsForm
 {
     public static function configure(Schema $schema): Schema
     {

@@ -1,10 +1,10 @@
 <?php
-namespace App\Filament\Resources\Users\Pages;
+namespace App\Filament\Admin\Resources\Users\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Schemas\Components\Tabs\Tab;
-use App\Filament\Resources\Users\UserResource;
+use App\Filament\Admin\Resources\Users\UserResource;
 
 class ListUsers extends ListRecords
 {
@@ -45,7 +45,7 @@ class ListUsers extends ListRecords
                     $query->whereHas(
                         'role',
                         fn ($role) =>
-                        $role->where('name', 'roles-user')
+                        $role->where('slug', 'roles-user')
                     )
                 ),
         ];

@@ -2,22 +2,20 @@
 namespace App\Filament\User\Resources\Bookings;
 
 use BackedEnum;
-use App\Models\Booking;
+use App\Models\Bookings;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Support\Icons\Heroicon;
-use App\Filament\User\Resources\Bookings\Pages\EditBooking;
-use App\Filament\User\Resources\Bookings\Pages\ViewBooking;
+use App\Filament\User\Resources\Bookings\Pages\EditBookings;
 use App\Filament\User\Resources\Bookings\Pages\ListBookings;
-use App\Filament\User\Resources\Bookings\Pages\CreateBooking;
-use App\Filament\User\Resources\Bookings\Schemas\BookingForm;
+use App\Filament\User\Resources\Bookings\Pages\CreateBookings;
+use App\Filament\User\Resources\Bookings\Schemas\BookingsForm;
 use App\Filament\User\Resources\Bookings\Tables\BookingsTable;
-use App\Filament\User\Resources\Bookings\Schemas\BookingInfolist;
 
-class BookingResource extends Resource
+class BookingsResource extends Resource
 {
-    protected static ?string $model = Booking::class;
+    protected static ?string $model = Bookings::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
@@ -25,12 +23,7 @@ class BookingResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return BookingForm::configure($schema);
-    }
-
-    public static function infolist(Schema $schema): Schema
-    {
-        return BookingInfolist::configure($schema);
+        return BookingsForm::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -48,9 +41,8 @@ class BookingResource extends Resource
     {
         return [
             'index'  => ListBookings::route('/'),
-            'create' => CreateBooking::route('/create'),
-            'view'   => ViewBooking::route('/{record}'),
-            'edit'   => EditBooking::route('/{record}/edit'),
+            'create' => CreateBookings::route('/create'),
+            'edit'   => EditBookings::route('/{record}/edit'),
         ];
     }
 }

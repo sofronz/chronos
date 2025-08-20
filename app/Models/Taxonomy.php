@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
  * @property string $slug
  * @property string|null $description
  * @property int $status
- * @property mixed|null $metadata
+ * @property object|null $metadata
  * @property string|null $parent_id
  * @property int|null $_lft
  * @property int|null $_rgt
@@ -114,6 +114,6 @@ class Taxonomy extends Model
      * @var array
      */
     protected $casts = [
-        'metadata' => 'required',
+        'metadata' => 'object',
     ];
 }

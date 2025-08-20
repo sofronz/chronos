@@ -1,5 +1,5 @@
 <?php
-namespace App\Filament\Resources\Users\Schemas;
+namespace App\Filament\Admin\Resources\Users\Schemas;
 
 use Filament\Schemas\Schema;
 use App\Models\Taxonomy\Role;
