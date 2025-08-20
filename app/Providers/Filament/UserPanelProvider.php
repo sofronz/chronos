@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\UserMiddleware;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Pages\Dashboard;
@@ -25,9 +26,11 @@ class UserPanelProvider extends PanelProvider
         return $panel
             ->id('user')
             ->path('user')
+            ->login()
             ->colors([
                 'primary' => Color::Blue,
             ])
+            ->brandName('Chronos - User Panel')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\Filament\User\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\Filament\User\Pages')
             ->pages([
@@ -51,6 +54,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                UserMiddleware::class,
             ]);
     }
 }

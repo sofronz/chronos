@@ -1,17 +1,17 @@
 <?php
-namespace App\Filament\Admin\Resources\Bookings\Pages;
+
+namespace App\Filament\User\Resources\Bookings\Pages;
 
 use App\Enum\BookingStatus;
-use Filament\Actions\ViewAction;
-use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
-use App\Filament\Admin\Resources\Bookings\BookingResource;
+use App\Filament\User\Resources\Bookings\BookingResource;
 use App\Models\Booking;
 use Carbon\Carbon;
 use Filament\Notifications\Notification;
+use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class EditBooking extends EditRecord
+class CreateBooking extends CreateRecord
 {
     /**
      * @var string
@@ -23,7 +23,7 @@ class EditBooking extends EditRecord
      *
      * @return array
      */
-    protected function mutateFormDataBeforeSave(array $data): array
+    protected function mutateFormDataBeforeCreate(array $data): array
     {
         $exists = Booking::query()
             ->where('room_id', $data['room_id'])
@@ -41,17 +41,9 @@ class EditBooking extends EditRecord
             throw ValidationException::withMessages(['date' => ['There is already an Approved booking for this room on the selected date.'], ]);
         }
 
-        return $data;
-    }
+        $data['user_id'] = Auth::user()->id;
+        $data['status'] = BookingStatus::Submit;
 
-    /**
-     * @return array
-     */
-    protected function getHeaderActions(): array
-    {
-        return [
-            ViewAction::make(),
-            DeleteAction::make(),
-        ];
+        return $data;
     }
 }
