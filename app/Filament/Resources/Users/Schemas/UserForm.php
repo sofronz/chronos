@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Filament\Resources\Users\Schemas;
 
-use App\Models\Role;
-use Filament\Forms\Components\DateTimePicker;
+use Filament\Schemas\Schema;
+use App\Models\Taxonomy\Role;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Schema;
-use Filament\Tables\Filters\SelectFilter;
 
 class UserForm
 {
@@ -27,9 +24,9 @@ class UserForm
                     ->required(),
                 TextInput::make('password')
                     ->password()
-                    ->dehydrateStateUsing(fn($state) => filled($state) ? bcrypt($state) : null)
-                    ->dehydrated(fn($state) => filled($state))
-                    ->required(fn(string $operation): bool => $operation === 'create'),
+                    ->dehydrateStateUsing(fn ($state) => filled($state) ? bcrypt($state) : null)
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->required(fn (string $operation): bool => $operation === 'create'),
             ]);
     }
 }

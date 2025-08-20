@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Table;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 
 class BookingsTable
 {
@@ -14,10 +13,8 @@ class BookingsTable
     {
         return $table
             ->columns([
-                //
             ])
             ->filters([
-                //
             ])
             ->recordActions([
                 ViewAction::make(),

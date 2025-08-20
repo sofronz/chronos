@@ -1,18 +1,11 @@
 <?php
-
 namespace App\Filament\Resources\Users\Tables;
 
-use App\Models\Role;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Schemas\Components\Tabs\Tab;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Support\Collection;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Columns\TextColumn;
 
 class UsersTable
 {
@@ -44,7 +37,7 @@ class UsersTable
             ])
             ->recordActions([
                 EditAction::make(),
-                DeleteAction::make()->visible(fn($record): bool => Auth::id() !== $record->id),
+                DeleteAction::make()->visible(fn ($record): bool => Auth::id() !== $record->id),
             ]);
     }
 }

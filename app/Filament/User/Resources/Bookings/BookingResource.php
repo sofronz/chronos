@@ -1,20 +1,19 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings;
 
-use App\Filament\User\Resources\Bookings\Pages\CreateBooking;
-use App\Filament\User\Resources\Bookings\Pages\EditBooking;
-use App\Filament\User\Resources\Bookings\Pages\ListBookings;
-use App\Filament\User\Resources\Bookings\Pages\ViewBooking;
-use App\Filament\User\Resources\Bookings\Schemas\BookingForm;
-use App\Filament\User\Resources\Bookings\Schemas\BookingInfolist;
-use App\Filament\User\Resources\Bookings\Tables\BookingsTable;
-use App\Models\Booking;
 use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
+use App\Models\Booking;
 use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
+use App\Filament\User\Resources\Bookings\Pages\EditBooking;
+use App\Filament\User\Resources\Bookings\Pages\ViewBooking;
+use App\Filament\User\Resources\Bookings\Pages\ListBookings;
+use App\Filament\User\Resources\Bookings\Pages\CreateBooking;
+use App\Filament\User\Resources\Bookings\Schemas\BookingForm;
+use App\Filament\User\Resources\Bookings\Tables\BookingsTable;
+use App\Filament\User\Resources\Bookings\Schemas\BookingInfolist;
 
 class BookingResource extends Resource
 {
@@ -42,17 +41,16 @@ class BookingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => ListBookings::route('/'),
+            'index'  => ListBookings::route('/'),
             'create' => CreateBooking::route('/create'),
-            'view' => ViewBooking::route('/{record}'),
-            'edit' => EditBooking::route('/{record}/edit'),
+            'view'   => ViewBooking::route('/{record}'),
+            'edit'   => EditBooking::route('/{record}/edit'),
         ];
     }
 }

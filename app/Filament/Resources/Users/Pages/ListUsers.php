@@ -1,12 +1,10 @@
 <?php
-
 namespace App\Filament\Resources\Users\Pages;
 
-use App\Filament\Resources\Users\UserResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
+use App\Filament\Resources\Users\UserResource;
 
 class ListUsers extends ListRecords
 {
@@ -31,23 +29,23 @@ class ListUsers extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
+            'all'   => Tab::make('All'),
             'admin' => Tab::make('Admin')
                 ->modifyQueryUsing(
-                    fn($query) =>
+                    fn ($query) =>
                     $query->whereHas(
                         'role',
-                        fn($role) =>
-                        $role->where('name', 'Admin')
+                        fn ($role) =>
+                        $role->where('slug', 'roles-administrator')
                     )
                 ),
             'user' => Tab::make('User')
                 ->modifyQueryUsing(
-                    fn($query) =>
+                    fn ($query) =>
                     $query->whereHas(
                         'role',
-                        fn($role) =>
-                        $role->where('name', 'User')
+                        fn ($role) =>
+                        $role->where('name', 'roles-user')
                     )
                 ),
         ];

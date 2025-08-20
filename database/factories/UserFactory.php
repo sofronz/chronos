@@ -1,11 +1,10 @@
 <?php
-
 namespace Database\Factories;
 
-use App\Models\Role;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Taxonomy\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -25,12 +24,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
-            'role_id' => Role::inRandomOrder()->first()->id,
+            'password'          => static::$password ??= Hash::make('password'),
+            'remember_token'    => Str::random(10),
+            'role_id'           => Role::inRandomOrder()->first()->id,
         ];
     }
 
@@ -43,17 +42,17 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
-
+    
     /**
-     * @param string $roleName
-     * 
+     * @param string $roleSlug
+     *
      * @return static
      */
-    public function withRole(string $roleName): static
+    public function withRole(string $roleSlug): static
     {
-        return $this->state(function (array $attributes) use ($roleName) {
+        return $this->state(function (array $attributes) use ($roleSlug) {
             return [
-                'role_id' => Role::where('name', $roleName)->first()->id,
+                'role_id' => Role::where('slug', $roleSlug)->first()->id,
             ];
         });
     }

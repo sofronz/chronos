@@ -1,9 +1,7 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -15,13 +13,13 @@ class UsersTableSeeder extends Seeder
     {
         User::truncate();
         
-        User::factory()->withRole('User')->create([
-            'name' => 'Demo User',
+        User::factory()->withRole('roles-user')->create([
+            'name'  => 'Demo User',
             'email' => 'user@chronos.id',
         ]);
 
-        User::factory()->withRole('Admin')->create([
-            'name' => 'Admin',
+        User::factory()->withRole('roles-administrator')->create([
+            'name'  => 'Admin',
             'email' => 'admin@chronos.id',
         ]);
     }

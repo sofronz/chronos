@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filament\User\Resources\Bookings\Schemas;
 
 use Filament\Schemas\Schema;
@@ -10,7 +9,6 @@ class BookingInfolist
     {
         return $schema
             ->components([
-                //
             ]);
     }
 }
